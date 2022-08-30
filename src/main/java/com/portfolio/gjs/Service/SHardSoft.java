@@ -14,7 +14,6 @@ public class SHardSoft {
     @Autowired
     RHardSoft rHardSoft;
     
-    
     public List<HardSoft> list(){
         return rHardSoft.findAll();
     }
@@ -23,7 +22,7 @@ public class SHardSoft {
         return rHardSoft.findById(id);
     }
     
-    public Optional<HardSoft> getByNombreE(String nombreE){
+    public Optional<HardSoft> getByNombreHS(String nombreE){
         return rHardSoft.findByNombreHS(nombreE);
     }
     
@@ -39,7 +38,7 @@ public class SHardSoft {
         return rHardSoft.existsById(id);
     }
     
-    public boolean existsByNombreE(String nombreHS){
+    public boolean existsByNombreHS(String nombreHS){
         return rHardSoft.existsByNombreHS(nombreHS);
     }
 }

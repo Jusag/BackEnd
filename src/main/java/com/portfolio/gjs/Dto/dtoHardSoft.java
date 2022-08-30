@@ -32,5 +32,4 @@ public class dtoHardSoft {
     public void setPorcentajeHS(int porcentajeHS) {
         this.porcentajeHS = porcentajeHS;
     }
-    
 }

@@ -1,9 +1,9 @@
 package com.portfolio.gjs.Controller;
 
-import com.portfolio.gjs.Dto.dtoHardSoft;
-import com.portfolio.gjs.Entity.HardSoft;
+import com.portfolio.gjs.Dto.dtoProyecto;
+import com.portfolio.gjs.Entity.Proyecto;
 import com.portfolio.gjs.Security.Controller.Mensaje;
-import com.portfolio.gjs.Service.SHardSoft;
+import com.portfolio.gjs.Service.SProyecto;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,70 +20,75 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/hardsoft")
+@RequestMapping("/proyecto")
 //@CrossOrigin(origins = "https://frontendtest900.web.app/")
 @CrossOrigin(origins = "http://localhost:4200")
-public class CHardSoft {
+public class CProyecto {
     @Autowired
-    SHardSoft sHardSoft;
+    SProyecto sProyecto;
     
     @GetMapping("/lista")
-    public ResponseEntity<List<HardSoft>> list() {
-        List<HardSoft> list = sHardSoft.list();
+    public ResponseEntity<List<Proyecto>> list() {
+        List<Proyecto> list = sProyecto.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
     @GetMapping("/detail/{id}")
-    public ResponseEntity<HardSoft> getById(@PathVariable("id") int id){
-        if(!sHardSoft.existsById(id))
+    public ResponseEntity<Proyecto> getById(@PathVariable("id") int id){
+        if(!sProyecto.existsById(id))
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
-        HardSoft hardSoft = sHardSoft.getOne(id).get();
-        return new ResponseEntity(hardSoft, HttpStatus.OK);
+        Proyecto proyecto = sProyecto.getOne(id).get();
+        return new ResponseEntity(proyecto, HttpStatus.OK);
     }
     
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody dtoHardSoft dtoHsoft) {
-        if (StringUtils.isBlank(dtoHsoft.getNombreHS())) {
+    public ResponseEntity<?> create(@RequestBody dtoProyecto dtoproyecto) {
+        if (StringUtils.isBlank(dtoproyecto.getNombreP())) {
             return new ResponseEntity(new Mensaje("Nombre Obligatiorio"), HttpStatus.BAD_REQUEST);
         }
-        if (sHardSoft.existsByNombreHS(dtoHsoft.getNombreHS())) {
+        if (sProyecto.existsByNombreP(dtoproyecto.getNombreP())) {
             return new ResponseEntity(new Mensaje("Esa Experiencia ya existe"), HttpStatus.BAD_REQUEST);
         }
-        HardSoft hardSoft = new HardSoft(
-                dtoHsoft.getNombreHS(),
-                dtoHsoft.getPorcentajeHS()
+        Proyecto proyecto = new Proyecto(
+                dtoproyecto.getNombreP(),
+                dtoproyecto.getDescripcionP(),
+                dtoproyecto.getLinkImg(),
+                dtoproyecto.getLinkExt()
                 );
-        sHardSoft.save(hardSoft);
+        sProyecto.save(proyecto);
         return new ResponseEntity(new Mensaje("Experiencia Agregada"), HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoHardSoft dtoHsoft) {
-        if(!sHardSoft.existsById(id)) {
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoProyecto dtoproyecto) {
+        if(!sProyecto.existsById(id)) {
             return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
         }
-        if(sHardSoft.existsByNombreHS(dtoHsoft.getNombreHS()) && sHardSoft.getByNombreHS(dtoHsoft.getNombreHS()).get().getId() != id){
+        if(sProyecto.existsByNombreP(dtoproyecto.getNombreP()) && sProyecto.getByNombreP(dtoproyecto.getNombreP()).get().getId() != id){
             return new ResponseEntity(new Mensaje("Esa Experiencia YA existe"),HttpStatus.BAD_REQUEST);
         }
-        if(StringUtils.isBlank(dtoHsoft.getNombreHS())){
+        if(StringUtils.isBlank(dtoproyecto.getNombreP())){
             return new ResponseEntity(new Mensaje("Nombre NO puede quedar en blanco"),HttpStatus.BAD_REQUEST);
         }
         
-        HardSoft shardSoft = sHardSoft.getOne(id).get();
+        Proyecto proyecto = sProyecto.getOne(id).get();
         
-        shardSoft.setNombreHS(dtoHsoft.getNombreHS());
-        shardSoft.setPorcentajeHS(dtoHsoft.getPorcentajeHS());
+        proyecto.setNombreP(dtoproyecto.getNombreP());
+        proyecto.setDescripcionP(dtoproyecto.getDescripcionP());
+        proyecto.setLinkImg(dtoproyecto.getLinkImg());
+        proyecto.setLinkExt(dtoproyecto.getLinkExt());
         
-        sHardSoft.save(shardSoft);
+        sProyecto.save(proyecto);
         return new ResponseEntity(new Mensaje("Experiencia Actualizada"), HttpStatus.OK);
     }
     
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
-        if (!sHardSoft.existsById(id)) {
+        if (!sProyecto.existsById(id)) {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }
-        sHardSoft.delete(id);
+        sProyecto.delete(id);
         return new ResponseEntity(new Mensaje("producto eliminado"), HttpStatus.OK);
     }
+
 }
