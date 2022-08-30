@@ -18,17 +18,17 @@ public class Proyecto {
     private String descripcionP;
     @NotNull
     private String linkImgP;
-    
+    @NotNull
     private String linkExtP;
     
     public Proyecto() {
     }
 
-    public Proyecto(String nombreP, String descripcionP, String linkImg, String linkExt) {
+    public Proyecto(String nombreP, String descripcionP, String linkImgP, String linkExtP) {
         this.nombreP = nombreP;
         this.descripcionP = descripcionP;
-        this.linkImgP = linkImg;
-        this.linkExtP = linkExt;
+        this.linkImgP = linkImgP;
+        this.linkExtP = linkExtP;
     }
     
 

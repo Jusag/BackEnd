@@ -1,15 +1,16 @@
 package com.portfolio.gjs.Dto;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+
 
 public class dtoProyecto {
-    @NotNull
+    @NotBlank
     private String nombreP;
-    @NotNull
+    @NotBlank
     private String descripcionP;
-    @NotNull
+    @NotBlank
     private String linkImgP;
-    
+    @NotBlank
     private String linkExtP;
 
     public dtoProyecto() {
