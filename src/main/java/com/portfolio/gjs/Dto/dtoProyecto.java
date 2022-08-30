@@ -8,18 +8,18 @@ public class dtoProyecto {
     @NotNull
     private String descripcionP;
     @NotNull
-    private String linkImg;
+    private String linkImgP;
     
-    private String linkExt;
+    private String linkExtP;
 
     public dtoProyecto() {
     }
 
-    public dtoProyecto(String nombreP, String descripcionP, String linkImg, String linkExt) {
+    public dtoProyecto(String nombreP, String descripcionP, String linkImgP, String linkExtP) {
         this.nombreP = nombreP;
         this.descripcionP = descripcionP;
-        this.linkImg = linkImg;
-        this.linkExt = linkExt;
+        this.linkImgP = linkImgP;
+        this.linkExtP = linkExtP;
     }
 
     
@@ -40,20 +40,20 @@ public class dtoProyecto {
         this.descripcionP = descripcionP;
     }
 
-    public String getLinkImg() {
-        return linkImg;
+    public String getLinkImgP() {
+        return linkImgP;
     }
 
-    public void setLinkImg(String linkImg) {
-        this.linkImg = linkImg;
+    public void setLinkImgP(String linkImgP) {
+        this.linkImgP = linkImgP;
     }
 
-    public String getLinkExt() {
-        return linkExt;
+    public String getLinkExtP() {
+        return linkExtP;
     }
 
-    public void setLinkExt(String linkExt) {
-        this.linkExt = linkExt;
+    public void setLinkExtP(String linkExtP) {
+        this.linkExtP = linkExtP;
     }
     
 }

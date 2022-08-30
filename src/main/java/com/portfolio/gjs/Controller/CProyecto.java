@@ -52,8 +52,8 @@ public class CProyecto {
         Proyecto proyecto = new Proyecto(
                 dtoproyecto.getNombreP(),
                 dtoproyecto.getDescripcionP(),
-                dtoproyecto.getLinkImg(),
-                dtoproyecto.getLinkExt()
+                dtoproyecto.getLinkImgP(),
+                dtoproyecto.getLinkExtP()
                 );
         sProyecto.save(proyecto);
         return new ResponseEntity(new Mensaje("Experiencia Agregada"), HttpStatus.OK);
@@ -75,8 +75,8 @@ public class CProyecto {
         
         proyecto.setNombreP(dtoproyecto.getNombreP());
         proyecto.setDescripcionP(dtoproyecto.getDescripcionP());
-        proyecto.setLinkImg(dtoproyecto.getLinkImg());
-        proyecto.setLinkExt(dtoproyecto.getLinkExt());
+        proyecto.setLinkImgP(dtoproyecto.getLinkImgP());
+        proyecto.setLinkExtP(dtoproyecto.getLinkExtP());
         
         sProyecto.save(proyecto);
         return new ResponseEntity(new Mensaje("Experiencia Actualizada"), HttpStatus.OK);
