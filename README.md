@@ -2,7 +2,7 @@
 
 ![normal](https://user-images.githubusercontent.com/34406115/187593753-23c076a4-c4dd-46f6-9046-f0d62e826e2e.png)
 
-Proyecto correspondiente al programa "Argentina Programa", segunda etapa "Yo Programo".
+Proyecto correspondiente al programa "Argentina Programa", "Yo Programo" segunda etapa.
 
 # Links
 FrontEnd -> https://frontendporfoliojsg.web.app
